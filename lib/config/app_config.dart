@@ -6,17 +6,3 @@ abstract class AppConfig {
   DogRepository get dogRepository;
   ColorSwatch get colorSwatch;
 }
-
-class AppConfigProd implements AppConfig {
-  final _dogRepository = DogRepositoryProd();
-  final _appName = "Dog Match";
-
-  @override
-  String get appName => _appName;
-
-  @override
-  DogRepository get dogRepository => _dogRepository;
-
-  @override
-  ColorSwatch get colorSwatch => Colors.deepPurple;
-}

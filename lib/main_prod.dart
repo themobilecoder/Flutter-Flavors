@@ -1,4 +1,5 @@
 import 'package:flutter_flavors/config/app_config.dart';
+import 'package:flutter_flavors/config/app_config_prod.dart';
 import 'package:flutter_flavors/main.dart';
 
 void main() {

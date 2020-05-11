@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_flavors/config/app_config.dart';
-import 'package:flutter_flavors/dog_stack.dart';
-import 'package:flutter_flavors/generic_button.dart';
-import 'package:flutter_flavors/generic_loading_spinner.dart';
+import 'package:flutter_flavors/widgets/dog_stack.dart';
+import 'package:flutter_flavors/widgets/generic_button.dart';
+import 'package:flutter_flavors/widgets/generic_loading_spinner.dart';
 
 class DogApp extends StatefulWidget {
   DogApp(this.appConfig);
