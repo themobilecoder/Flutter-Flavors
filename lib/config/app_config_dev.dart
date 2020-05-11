@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_flavors/config/app_config.dart';
 import 'package:flutter_flavors/repository/dog_repository.dart';
 import 'package:flutter_flavors/repository/dog_repository_dev.dart';
@@ -11,4 +12,7 @@ class AppConfigDev implements AppConfig {
 
   @override
   DogRepository get dogRepository => _dogRepository;
+
+  @override
+  ColorSwatch get colorSwatch => Colors.grey;
 }

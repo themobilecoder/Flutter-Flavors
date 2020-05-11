@@ -10,7 +10,7 @@ abstract class DogRepository {
 class DogRepositoryProd implements DogRepository {
   @override
   Future<List<ImageProvider>> getDogImages() async {
-    final response = await http.get('https://dog.ceo/api/breeds/image/random/20');
+    final response = await http.get('https://dog.ceo/api/breeds/image/random/10');
     final List<ImageProvider> images =
         (json.decode(response.body)['message'] as List).map((dogUrl) => NetworkImage(dogUrl)).toList();
 

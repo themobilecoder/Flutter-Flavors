@@ -21,12 +21,12 @@ class _DogStackState extends State<DogStack> {
 
   @override
   Widget build(BuildContext context) {
-    final dogWidgets = [];
+    final List<Widget> dogWidgets = [];
     widget.images.asMap().forEach((index, imageProvider) {
       dogWidgets.add(Dismissible(
         key: UniqueKey(),
         child: Container(
-          color: Colors.white,
+          color: Theme.of(context).canvasColor,
           child: Center(
             child: Image(
               image: widget.images[index],
@@ -49,12 +49,7 @@ class _DogStackState extends State<DogStack> {
       ));
     });
     return Stack(
-      children: [
-        Center(
-          child: Text('You ran out of dogs :('),
-        ),
-        ...dogWidgets
-      ],
+      children: dogWidgets,
     );
   }
 }
