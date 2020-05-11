@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 abstract class DogRepository {
   Future<List<ImageProvider>> getDogImages();
@@ -7,6 +10,10 @@ abstract class DogRepository {
 class DogRepositoryProd implements DogRepository {
   @override
   Future<List<ImageProvider>> getDogImages() async {
-    return Future.value([]);
+    final response = await http.get('https://dog.ceo/api/breeds/image/random/20');
+    final List<ImageProvider> images =
+        (json.decode(response.body)['message'] as List).map((dogUrl) => NetworkImage(dogUrl)).toList();
+
+    return Future.value(images);
   }
 }

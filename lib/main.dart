@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_flavors/config/app_config.dart';
+import 'package:flutter_flavors/dog_stack.dart';
+
+import 'package:flutter_flavors/generic_loading_spinner.dart';
 
 void mainCommon(AppConfig appConfig) {
   runApp(DogApp(
@@ -18,31 +21,31 @@ class DogApp extends StatelessWidget {
         primarySwatch: Colors.orange,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(
-        appConfig: appConfig,
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text(appConfig.appName),
+        ),
+        body: FutureBuilder(
+          future: appConfig.dogRepository.getDogImages(),
+          builder: (context, snapshot) {
+            final dogImages = snapshot.data as List<ImageProvider>;
+            if (snapshot.hasData) {
+              return DogStack(
+                images: dogImages,
+              );
+            } else if (snapshot.hasError) {
+              return Center(
+                child: Text('There is an error in dog server'),
+              );
+            } else {
+              return Center(
+                child: GenericLoadingSpinner(),
+              );
+            }
+          },
+        ),
       ),
       debugShowCheckedModeBanner: false,
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, @required this.appConfig}) : super(key: key);
-
-  final AppConfig appConfig;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    final appConfig = widget.appConfig;
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(appConfig.appName),
-      ),
     );
   }
 }
