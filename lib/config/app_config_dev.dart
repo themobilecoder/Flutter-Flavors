@@ -14,5 +14,5 @@ class AppConfigDev implements AppConfig {
   DogRepository get dogRepository => _dogRepository;
 
   @override
-  ColorSwatch get colorSwatch => Colors.grey;
+  ColorSwatch get colorSwatch => Colors.orange;
 }
