@@ -1,6 +1,12 @@
-# flutter_flavors
+# Flutter Flavors Dog sample app
 
-Dog app with different app flavors
+[<img src="res/flutter-flavor_feature-image.png" width="500">](https://themobilecoder.com/an-easy-way-to-set-up-flavors-in-flutter)
+
+## A sample app to demonstrate different app flavors
+
+This is the complete source code used in this [tutorial](https://themobilecoder.com/an-easy-way-to-set-up-flavors-in-flutter) .
+
+<img src="res/flavor-dev.gif" height="400"><img src="res/flavor-prod.gif" height="400">
 
 ## Getting Started
 
