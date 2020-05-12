@@ -4,6 +4,6 @@ import 'package:flutter_flavors/repository/dog_repository.dart';
 class DogRepositoryDev implements DogRepository {
   @override
   Future<List<ImageProvider>> getDogImages() {
-    return Future.value([]);
+    return Future.value([AssetImage('assets/dog.jpg')]);
   }
 }
