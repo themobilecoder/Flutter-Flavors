@@ -43,7 +43,7 @@ class _DogAppState extends State<DogApp> {
               color: Theme.of(context).canvasColor,
               child: FutureBuilder(
                 key: UniqueKey(),
-                future: appConfig.dogRepository.getDogImages(),
+                future: appConfig.dogRepository.getDogImages(count: 10),
                 builder: (context, snapshot) {
                   final dogImages = snapshot.data as List<ImageProvider>;
                   if (snapshot.hasData) {

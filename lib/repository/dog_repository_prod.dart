@@ -6,8 +6,8 @@ import 'package:http/http.dart' as http;
 
 class DogRepositoryProd implements DogRepository {
   @override
-  Future<List<ImageProvider>> getDogImages() async {
-    final response = await http.get('https://dog.ceo/api/breeds/image/random/10');
+  Future<List<ImageProvider>> getDogImages({int count = 0}) async {
+    final response = await http.get('https://dog.ceo/api/breeds/image/random/$count');
     final List<ImageProvider> images =
         (json.decode(response.body)['message'] as List).map((dogUrl) => NetworkImage(dogUrl)).toList();
 
