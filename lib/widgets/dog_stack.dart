@@ -1,49 +1,30 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_flavors/widgets/image_wrapper.dart';
+import 'package:toast/toast.dart';
 
-class DogStack extends StatefulWidget {
+class DogStack extends StatelessWidget {
   DogStack({@required this.images});
 
   final List<ImageProvider> images;
 
   @override
-  _DogStackState createState() => _DogStackState();
-}
-
-class _DogStackState extends State<DogStack> {
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    widget.images.forEach((image) {
-      precacheImage(image, context);
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
     final List<Widget> dogWidgets = [];
-    widget.images.asMap().forEach((index, imageProvider) {
+    images.asMap().forEach((index, imageProvider) {
       dogWidgets.add(Dismissible(
         key: UniqueKey(),
+        onDismissed: (direction) {
+          if (direction == DismissDirection.startToEnd) {
+            _showLikeMessage(context);
+          } else if (direction == DismissDirection.endToStart) {
+            _showDislikeMessage(context);
+          }
+        },
         child: Container(
           color: Theme.of(context).canvasColor,
           child: Center(
-            child: Image(
-              image: widget.images[index],
-              fit: BoxFit.fill,
-              loadingBuilder: (context, child, loadingProgress) {
-                if (loadingProgress == null) {
-                  return child;
-                } else {
-                  return CupertinoActivityIndicator();
-                }
-              },
-              errorBuilder: (context, error, stackTrace) {
-                return Center(
-                  child: Text('Image unavailable'),
-                );
-              },
-            ),
+            child: ImageWrapper(imageProvider: images[index]),
           ),
         ),
       ));
@@ -51,5 +32,13 @@ class _DogStackState extends State<DogStack> {
     return Stack(
       children: dogWidgets,
     );
+  }
+
+  void _showLikeMessage(BuildContext context) {
+    Toast.show('Liked!', context, backgroundColor: Colors.green, duration: Toast.LENGTH_LONG);
+  }
+
+  void _showDislikeMessage(BuildContext context) {
+    Toast.show('Nope!', context, backgroundColor: Colors.red, duration: Toast.LENGTH_LONG);
   }
 }
