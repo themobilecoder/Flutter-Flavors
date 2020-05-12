@@ -2,16 +2,16 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Flutter Dev",
+            "name": "Dog Match Dev",
             "request": "launch",
             "type": "dart",
             "program": "lib/main_dev.dart",
         },
         {
-            "name": "Flutter Prod",
+            "name": "Dog Match Prod",
             "request": "launch",
             "type": "dart",
-            "program": "lib/main_dev.dart",
+            "program": "lib/main_prod.dart",
         }
     ]
 }
