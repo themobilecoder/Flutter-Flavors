@@ -3,7 +3,7 @@ import 'package:flutter_flavors/repository/dog_repository.dart';
 
 class DogRepositoryDev implements DogRepository {
   @override
-  Future<List<ImageProvider>> getDogImages({int count = 0}) {
+  Future<List<ImageProvider>> getDogImages({int count = 1}) {
     return Future.value(List.generate(count, (_) => AssetImage('assets/dog.jpg')));
   }
 }
